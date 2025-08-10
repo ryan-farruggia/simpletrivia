@@ -1,0 +1,3 @@
+- topics pages
+- get random trivia into json format by category
+- get the tips on the home page to display random tips every few seconds

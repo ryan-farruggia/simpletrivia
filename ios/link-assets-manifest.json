@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Inter.ttf",
+      "sha1": "ee5c2e22ffeddefc433c9aa4c76779bb73a5c682"
+    },
+    {
+      "path": "assets/fonts/Jersey.ttf",
+      "sha1": "3825f6d50662c2ec141404a62698928c2d4b8196"
+    },
+    {
+      "path": "assets/fonts/Jersey25-Regular.ttf",
+      "sha1": "3825f6d50662c2ec141404a62698928c2d4b8196"
+    }
+  ]
+}
