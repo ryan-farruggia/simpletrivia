@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Pressable, StyleSheet, View, ViewStyle, TextStyle } from 'react-native';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -20,6 +20,7 @@ interface NavButtonProps {
   style?: ViewStyle;
   textStyle?: TextStyle;
   soundFile?: { name: string; type: string };
+  onPress?: () => void; // ✅ added
 }
 
 const NavButton: React.FC<NavButtonProps> = ({
@@ -29,6 +30,7 @@ const NavButton: React.FC<NavButtonProps> = ({
   style,
   textStyle,
   soundFile,
+  onPress, // ✅ added
 }) => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { colors } = useTheme();
@@ -42,8 +44,14 @@ const NavButton: React.FC<NavButtonProps> = ({
       console.warn('SoundPlayer error:', e);
     }
 
-    if (targetPage) navigation.navigate(targetPage, params as never);
-  }, [navigation, targetPage, params, soundFile]);
+    if (onPress) {
+      onPress();
+    }
+
+    if (targetPage) {
+      navigation.navigate(targetPage, params as never);
+    }
+  }, [navigation, targetPage, params, soundFile, onPress]);
 
   return (
     <View style={[styles.wrapper, { borderColor: colors.border }]}>
@@ -63,7 +71,6 @@ export default NavButton;
 
 const styles = StyleSheet.create({
   wrapper: {
-    margin: 8,
     borderRadius: 8,
     backgroundColor: 'transparent',
     overflow: 'hidden',
